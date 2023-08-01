@@ -1,9 +1,10 @@
-import { Usuario } from "../models/Usuario"
+import { Usuario } from "../models/Usuario.js"
+import moment from "moment/moment.js"
 
 class UsuarioController {
 
 
-    static criarUsuario = async (req, res) => {
+    static inserir = async (req, res) => {
 
         //desestrutruração do body para acessar os atributos
         const { nome, idade, ativo, email } = req.body;
@@ -16,10 +17,10 @@ class UsuarioController {
         res.status(201).json({
             data: usuarioDB,
             msg: 'usuário criado com sucesso!'
-        })
-    }
+        });
+    };
 
-    static atualizarUsuario = async (req, res) => {
+    static atualizar = async (req, res) => {
         const id = req.params.id
 
         //desestrutruração do body para acessar os atributos
@@ -56,7 +57,7 @@ class UsuarioController {
     }
 
     //Criar a rota apagar no Node.js
-    static excluirUsuario = async (req, res) => {
+    static excluir = async (req, res) => {
         const id = req.params.id
 
         //Busca o usuário, antes de deletar, com as suas informações
